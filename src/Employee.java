@@ -90,23 +90,6 @@ public class Employee {
 
     }
 
-    /*@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Employee)) return false;
-        Employee employee = (Employee) o;
-        return getSalary() == employee.getSalary() &&
-                idEmployee == employee.idEmployee &&
-                Objects.equals(getFullName(),
-                        employee.getFullName()) &&
-                Objects.equals(getDepartment(),
-                        employee.getDepartment());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getFullName(), getSalary(), idEmployee, getDepartment());}*/
-
     @Override
     public String toString() {
         return "Сотрудник: " +
