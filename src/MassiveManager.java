@@ -38,15 +38,12 @@ public class MassiveManager {
     //элементов массива markers
     public static int findFreeIndex() {
         freeIndex = 0;
-
         for (int i = 0; i < markers.length; i++) {
             if (markers[i] == 0) {
                 freeIndex = i;
                 i = markers.length;
             }
-
         }
         return freeIndex;
     }
-
 }
