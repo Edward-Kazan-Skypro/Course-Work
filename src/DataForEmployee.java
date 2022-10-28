@@ -40,6 +40,7 @@ public class DataForEmployee {
         if (bufferForIndexOfNames == currentIndexOfNames) {
             selectFullName();
         }
+        bufferForIndexOfNames = currentIndexOfNames;
         return fullNames[currentIndexOfNames];
     }
 
@@ -51,8 +52,8 @@ public class DataForEmployee {
         return departments[indexOfDepartment];
     }
 
-    //Метод возвращает число в диапазоне от 0 до 100 000
+    //Метод возвращает число в диапазоне от 0 до 10 000
     public static int selectSalary() {
-        return new Random().nextInt(1000000);
+        return new Random().nextInt(10000);
     }
 }

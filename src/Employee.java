@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class Employee {
 
     private String fullName;
@@ -33,7 +31,7 @@ public class Employee {
         return idEmployee;
     }
 
-    public boolean checkInputData(String fullName, int salary, String department) {
+    public static boolean checkInputData(String fullName, int salary, String department) {
         boolean checkData = false;
         boolean checkFullName = checkFullName(fullName);
         boolean checkSalary = checkSalary(salary);
@@ -45,7 +43,7 @@ public class Employee {
         return checkData;
     }
 
-    public boolean checkFullName(String fullName) {
+    public static boolean checkFullName(String fullName) {
         boolean checkFullName = false;
 
         if (fullName.length() > 0) {
@@ -56,11 +54,7 @@ public class Employee {
         return checkFullName;
     }
 
-    public void setFullName(String fullName){
-        if (checkFullName(fullName)) this.fullName = fullName;
-    }
-
-    public boolean checkSalary(int salary) {
+    public static boolean checkSalary(int salary) {
         boolean checkSalary = false;
         if (salary <= 0) {
             System.out.println("Заработная плата меньше или равна нулю. Проверьте вводимые данные!");
@@ -70,11 +64,7 @@ public class Employee {
         return checkSalary;
     }
 
-    public void setSalary (int salary) {
-        if (checkSalary(salary)) this.salary = salary;
-    }
-
-    public boolean checkDepartment(String department) {
+    public static boolean checkDepartment(String department) {
         boolean checkDepartment = false;
         for (int i = 0; i < DataForEmployee.departments.length; i++) {
             if (DataForEmployee.departments[i].equals(department)) {
@@ -87,13 +77,20 @@ public class Employee {
         return checkDepartment;
     }
 
+    public void setFullName(String fullName){
+        if (checkFullName(fullName)) this.fullName = fullName;
+    }
+
+    public void setSalary (int salary) {
+        if (checkSalary(salary)) this.salary = salary;
+    }
+
     public void setDepartment(String department) {
         if (checkDepartment(department)) this.department = department;
 
     }
 
-
-    @Override
+    /*@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Employee)) return false;
@@ -108,8 +105,7 @@ public class Employee {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFullName(), getSalary(), idEmployee, getDepartment());
-    }
+        return Objects.hash(getFullName(), getSalary(), idEmployee, getDepartment());}*/
 
     @Override
     public String toString() {
