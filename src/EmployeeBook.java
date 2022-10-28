@@ -3,6 +3,7 @@ public class EmployeeBook {
     //Количество записей о сотрудниках (10 сотрудников)
     private final Employee[] employees = new Employee[10];
 
+    //Метод получения массива (обращения к массиву) для использования в других классах
     public Employee[] getEmployees() {
         return employees;
     }
@@ -48,7 +49,6 @@ public class EmployeeBook {
         for (int i = 0; i < MassiveManager.markers.length; i++) {
             if (MassiveManager.markers[i] > 0) {
                 if (employees[i].getFullName().equals(name)) {
-                    employees[i] = null;
                     MassiveManager.markers[i] = 0;
                     System.out.println("Запись о сотруднике с ФИО " + name + " успешно удалена");
                 }
@@ -62,7 +62,7 @@ public class EmployeeBook {
     //Метод - просмотр всех сотрудников со всеми данными по сотруднику
     public void viewAllEmployees(Employee[] employees) {
         int counter = 0;
-        System.out.println("Список сотрудников организации: ");
+        System.out.println("Список всех сотрудников организации: ");
         for (int i = 0; i < MassiveManager.markers.length; i++) {
             if (MassiveManager.markers[i] > 0) {
                 System.out.println(employees[i].toString());
@@ -96,11 +96,16 @@ public class EmployeeBook {
 
     //Метод - просмотр ФИО всех сотрудников
     public void viewFullNameList() {
+        int counterOfEmployees = 0;
         System.out.println("Список всех сотрудников (только ФИО):");
         for (int i = 0; i < MassiveManager.markers.length; i++) {
             if (MassiveManager.markers[i] > 0) {
                 System.out.println(employees[i].getFullName());
+                counterOfEmployees++;
             }
+        }
+        if (!(counterOfEmployees > 0)) {
+            System.out.println("Список сотрудников организации пуст. Информация для отображения отсутствует.");
         }
     }
 
@@ -118,10 +123,8 @@ public class EmployeeBook {
         if (counterOfEmployees > 0) {
             System.out.println("Сумма затрат на зарплату по всей организации = " + sumOfSalary);
         } else {
-            System.out.println("Список сотрудников организации пуст.");
+            System.out.println("Список сотрудников организации пуст. Информация для отображения отсутствует.");
         }
-
-
     }
 
     //Метод - расчет средней зарплаты всех сотрудников
@@ -138,35 +141,23 @@ public class EmployeeBook {
         if (counterOfEmployees > 0) {
             System.out.println("Средняя зарплата в организации = " + sumOfSalary / counterOfEmployees);
         } else {
-            System.out.println("Список сотрудников организации пуст.");
+            System.out.println("Список сотрудников организации пуст. Информация для отображения отсутствует.");
         }
 
-    }
-
-
-    //Метод - индексация зарплаты
-    public void salaryRecalculation(int percent) {
-        int newSalary;
-        for (int i = 0; i < MassiveManager.markers.length; i++) {
-            if (MassiveManager.markers[i] > 0) {
-                newSalary = employees[i].getSalary() + employees[i].getSalary() * percent / 100;
-                employees[i].setSalary(newSalary);
-            }
-        }
     }
 
     //Метод - поиск сотрудника с минимальной зарплатой
     public void findMinimalSalary() {
         int minSalary = 0;
         int indexEmployees = 0;
-        //Ищем любую заполненную ячейку в массиве
+        //Ищем любую заполненную ячейку в массиве.
         //Сохраняем размер зарплаты для дальнейшего использования
         for (int i = 0; i < MassiveManager.markers.length; i++) {
             if (MassiveManager.markers[i] > 0) {
                 minSalary = employees[i].getSalary();
             }
         }
-        //Проходим по массиву, просматриваем только заполненные ячейки
+        //Проходим по массиву, просматриваем только заполненные ячейки.
         //Находим минимальное значение и сохраняем индекс ячейки, из которой взяли это значение
         for (int i = 0; i < MassiveManager.markers.length; i++) {
             if (MassiveManager.markers[i] > 0) {
@@ -176,7 +167,7 @@ public class EmployeeBook {
                 }
             }
         }
-        //Выводим на экран данные о сотруднике с минимальной зарплатой
+        //Выводим на экран данные о сотруднике с минимальной зарплатой.
         //Или сообщаем о пустом списке сотрудников
         if (indexEmployees != 0) {
             System.out.println("Данные о сотруднике с минимальной зарплатой:");
@@ -198,7 +189,7 @@ public class EmployeeBook {
                 maxSalary = employees[i].getSalary();
             }
         }
-        //Проходим по массиву, просматриваем только заполненные ячейки
+        //Проходим по массиву, просматриваем только заполненные ячейки.
         //Находим максимальное значение и сохраняем индекс ячейки, из которой взяли это значение
         for (int i = 0; i < MassiveManager.markers.length; i++) {
             if (MassiveManager.markers[i] > 0) {
@@ -208,7 +199,7 @@ public class EmployeeBook {
                 }
             }
         }
-        //Выводим на экран данные о сотруднике с максимальной зарплатой
+        //Выводим на экран данные о сотруднике с максимальной зарплатой.
         //Или сообщаем о пустом списке сотрудников
         if (indexEmployees != 0) {
             System.out.println("Данные о сотруднике с максимальной зарплатой:");
@@ -262,7 +253,7 @@ public class EmployeeBook {
             }
         }
         if (counterOfEmployees == 0) {
-            System.out.println("Список сотрудников пуст. Информация для отображения отсутсвует.");
+            System.out.println("Список сотрудников пуст. Информация для отображения отсутствует.");
         }
     }
 
@@ -277,13 +268,29 @@ public class EmployeeBook {
                     System.out.println("id сотрудника: " + employees[i].getIdEmployee() +
                             ", ФИО сотрудника: " + employees[i].getFullName() +
                             ", зарплата: " + employees[i].getSalary() + " рублей");
-
                 }
                 counterOfEmployees++;
             }
         }
         if (counterOfEmployees == 0) {
-            System.out.println("Список сотрудников пуст. Информация для отображения отсутсвует.");
+            System.out.println("Список сотрудников пуст. Информация для отображения отсутствует.");
+        }
+    }
+
+    //Метод - индексация зарплаты всех сотрудников на величину, задаваемую параметром percent (%)
+    public void salaryRecalculation(int percent) {
+        int newSalary;
+        int counterOfEmployees = 0;
+        for (int i = 0; i < MassiveManager.markers.length; i++) {
+            if (MassiveManager.markers[i] > 0) {
+                newSalary = employees[i].getSalary() + employees[i].getSalary() * percent / 100;
+                employees[i].setSalary(newSalary);
+                counterOfEmployees++;
+            }
+        }
+        if (counterOfEmployees == 0) {
+            System.out.println("Список сотрудников пуст.");
+            System.out.println("Индексация зарплаты не рассчитана.");
         }
     }
 }

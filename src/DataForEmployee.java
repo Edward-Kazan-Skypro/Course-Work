@@ -18,12 +18,18 @@ public class DataForEmployee {
             "Сухов Андрей Борисович",
             "Солнцев Иван Геннадьевич",
     };
-    static String[] departments = {"Бухгалтерия",
+    static String[] departments = {"1", "2", "3", "4", "5"};
+
+    //Первоначально, при написании программы использовал более привычные названия отделов
+    //Но, согласно условиям курсовой "Отделы для простоты должны быть названы от 1 до 5."
+    //Поэтому пусть будут безликие названия-цифры.
+    /*static String[] departments = {"Бухгалтерия",
             "Правовой департамент",
             "Технический департамент",
             "АХО",
             "Секретариат",
-    };
+    };*/
+
 
     //Метод - получения не совсем уникального ФИО из массива имен
     //Пока что получилось чтобы ФИО не дублировалось два раза подряд
@@ -37,6 +43,8 @@ public class DataForEmployee {
         return fullNames[currentIndexOfNames];
     }
 
+    //Метод - получение случайным образом названия департамента
+    //Повтор названия не критичен, дополнительной проверки нет
     public static String selectDepartment() {
         Random randomDepartment = new Random();
         int indexOfDepartment = randomDepartment.nextInt(departments.length);

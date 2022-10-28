@@ -4,7 +4,6 @@ public class Main {
 
         EmployeeBook employeeBook = new EmployeeBook();
 
-
         //Заполняем массив данными из списков, указанных в классе DataForEmployee
         //ФИО, название департамента и зарплата выбираются случайным образом
         for (int i = 0; i < 10; i++) {
@@ -16,7 +15,7 @@ public class Main {
         employeeBook.viewAllEmployees(employeeBook.getEmployees());
         System.out.println();
 
-        //Вызов метода - удаление сведенийо сотруднике по ID
+        //Вызов метода - удаление сведений о сотруднике по ID
         employeeBook.deleteEmployeeByID(5);
         System.out.println();
 
@@ -24,7 +23,7 @@ public class Main {
         employeeBook.viewAllEmployees(employeeBook.getEmployees());
 
         //Добавим одного сотрудника с фиктивным ФИО для последующего удаления
-        Employee emp_1 = new Employee("ABC", 10, "Бухгалтерия");
+        Employee emp_1 = new Employee("ABC", 10, "1");
         employeeBook.addEmployeeToEmployeeBook(emp_1);
         System.out.println();
 
@@ -59,6 +58,9 @@ public class Main {
         //Вызов метода - просмотр средней зарплаты по всем сотрудникам в организации
         employeeBook.averageSalary();
         System.out.println();
+        //После вызова метода я проверил выводимую на экран сумму.
+        //Надо учитывать, что после удаления сведений о некоторых сотрудниках, их количество уменьшается.
+        //Соответственно сумму всех зарплат надо делить на точное количество сотрудников, а не на длину массива.
 
         //Вызов метода - просмотр сведений о средней зарплате по департаменту
         employeeBook.averageSalaryByDepartment();
@@ -76,7 +78,7 @@ public class Main {
         employeeBook.findSalaryMoreThan(100000);
 
         //Вызов метода - индексация зарплаты всем сотрудникам на определенный %
-        employeeBook.salaryRecalculation(5);
+        employeeBook.salaryRecalculation(100);
 
         //Посмотрим обновленный список сотрудников
         employeeBook.viewAllEmployees(employeeBook.getEmployees());
