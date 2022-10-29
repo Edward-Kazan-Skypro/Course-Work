@@ -7,9 +7,9 @@ public class Main {
         //Заполняем массив данными из списков, указанных в классе DataForEmployee
         //ФИО, название департамента и зарплата выбираются случайным образом
         for (int i = 0; i < 10; i++) {
-            employeeBook.addEmployeeToEmployeeBook(new Employee(DataForEmployee.selectFullName(),
+               employeeBook.addNewEmployee(DataForEmployee.selectFullName(),
                     DataForEmployee.selectSalary(),
-                    DataForEmployee.selectDepartment()));
+                    DataForEmployee.selectDepartment());
         }
 
         //-------------------------------------------------------------------------------------
